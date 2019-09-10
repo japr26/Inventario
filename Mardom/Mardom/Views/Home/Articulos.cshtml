@@ -1,0 +1,49 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Mardom.Models.Almacen_Articulo>
+@{
+    ViewBag.Title = "Articulos";
+}
+
+<h2>Productos</h2>
+
+<ol class="breadcrumb">
+    <li><a href="~/">Articulos</a></li>
+    <li>/ Articulo</li>
+</ol>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Articulo</th>
+            <th style="width:200px">Almacen</th>
+            <th style="width:200px">Cantidad</th>
+            <th style="width:200px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@(m.Articulo.Descripcion)</td>
+                <td>@(m.Almacen.Descripcion)</td>
+                <td>@(m.Cantidad)</td>
+                <td>
+                    <a class="btn btn-xs btn-primary" href="~/Home/Entrada/@m.ArticuloId/@m.AlmacenId">Entrada</a>
+                    <a class="btn btn-xs btn-danger" href="~/Home/Salida/@m.ArticuloId/@m.AlmacenId">Salida</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<div style="margin-left: 20px">
+    <p></p>
+    <p></p>
+    <div class="pagination-sm" style="margin-left: 400px">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Transacciones", new { page }))
+    </div>
+</div>

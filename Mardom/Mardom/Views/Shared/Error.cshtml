@@ -1,0 +1,43 @@
+﻿@using Mardom.Utilidades
+@model HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+}
+
+<div class="page-header">
+
+    <div class="alert alert-info">
+
+        <h1>Error</h1>
+
+    </div>
+
+</div>
+
+@if (Model.Exception is MiExcepcion)
+{
+    <div class="page-header">
+
+        <div class="alert alert-danger">
+
+            <h2>@Model.Exception.Message</h2>
+
+        </div>
+
+    </div>
+
+}
+else
+{
+    <div class="page-header">
+
+        <div class="alert alert-danger">
+
+            <h3>A ocurrido un error inesperado:
+            <br />*si esta asignando un articulo verifique que aun no este en el almacen seleccionado.
+            <br />*Complete los campos en los formularios</h3>
+
+        </div>
+
+    </div>
+}

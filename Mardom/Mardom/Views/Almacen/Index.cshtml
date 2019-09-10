@@ -1,0 +1,46 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Mardom.Models.Almacen>
+@{
+    ViewBag.Title = "Inicio";
+}
+
+<h2>Almacenes</h2>
+
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Almacén</th>
+            <th style="width:200px">Ubicación</th>
+            <th style="width:200px">Capacidad</th>
+            <th style="width:200px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@(m.Descripcion)</td>
+                <td>@(m.Ubicacion)</td>
+                <td>@(m.Capacidad)</td>
+                <td>
+                    <a class="btn btn-xs btn-default" href="~/Almacen/ver/@m.Id">Ver</a>
+                    <a class="btn btn-xs btn-primary" href="~/Almacen/crud/@m.Id">Editar</a>
+                    <a onclick="return confirm('¿Desea eliminar el registro?');" class="btn btn-xs btn-danger" href="~/Almacen/eliminar/@m.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<div style="margin-left: 20px">
+    <p></p>
+    <p></p>
+    <div class="pagination-sm" style="margin-left: 400px">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </div>
+</div>

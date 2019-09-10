@@ -1,0 +1,24 @@
+﻿@model Mardom.Models.Almacen
+@{
+    ViewBag.Title = Model.Descripcion;
+}
+
+<ol class="breadcrumb">
+    <li><a href="~/Almacen">Almacenes</a></li>
+    <li class="active">/ @(Model.Descripcion)</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Información del articulo</div>
+    <div class="panel-body">
+        <dl>
+            <dt>Descripción:</dt>
+            <dd>@(Model.Descripcion)</dd>
+            <dt>Ubicación:</dt>
+            <dd>@(Model.Ubicacion)</dd>
+            <dt>Capacidad:</dt>
+            <dd>@(Model.Capacidad)</dd>
+        </dl>
+    </div>
+</div>
+

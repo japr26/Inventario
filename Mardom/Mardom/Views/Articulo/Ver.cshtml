@@ -1,0 +1,30 @@
+﻿
+@model Mardom.Models.Articulo
+@{
+    ViewBag.Title = Model.Descripcion;
+}
+
+<ol class="breadcrumb">
+    <li><a href="~/Articulo">Articulos</a></li>
+    <li class="active">/ @(Model.Descripcion)</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Información del articulo</div>
+    <div class="panel-body">
+        <dl>
+            <dt>Descripció:</dt>
+            <dd>@(Model.Descripcion)</dd>
+            <dt>Categoria:</dt>
+            <dd>@(Model.Categoria.Descripcion)</dd>
+            <dt>Marca:</dt>
+            <dd>@(Model.Marca.Single().Descripcion)</dd>
+            <dt>Proveedor:</dt>
+            <dd>@(Model.Proveedor.Single().Descripcion)</dd>
+            <dt>Precio de compra:</dt>
+            <dd>@(Model.PrecioCompra)</dd>
+            <dt>Precio de venta:</dt>
+            <dd>@(Model.PrecioVenta1)</dd>
+        </dl>
+    </div>
+</div>

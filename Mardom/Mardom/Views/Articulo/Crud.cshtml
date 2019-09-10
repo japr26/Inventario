@@ -1,0 +1,53 @@
+﻿@model Mardom.Models.Articulo
+@{
+                ViewBag.Title = (Model.Id> 0 ? Model.Descripcion : "Nuevo Registro");
+                List<Mardom.Models.Categoria> categoria = ViewBag.Categorias;
+                List<Mardom.Models.Marca> marca = ViewBag.Marcas;
+                List<Mardom.Models.Proveedor> proveedor = ViewBag.Proveedor;
+
+}
+
+<ol class="breadcrumb">
+    <li><a href="~/Articulo">Articulos</a></li>
+    <li class="active">/ @(Model.Id > 0 ? Model.Descripcion : "Nuevo Registro")</li>
+</ol>
+
+@using (Html.BeginForm("Guardar", "Articulo", FormMethod.Post, new { id = "frm-articulo" }))
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="panel panel-default">
+        <div class="panel-heading">Información de articulo</div>
+        <div class="panel-body">
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                <div class="form-group">
+                    @Html.Label("Articulo")
+                    @Html.TextBoxFor(x => x.Descripcion, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Descripcion, null, new { @class = "label label-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Precio de compra")
+                    @Html.TextBoxFor(x => x.PrecioCompra, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.PrecioCompra, null, new { @class = "label label-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Categoria")
+                    @Html.DropDownListFor(x => x.CategoriaId, new SelectList(categoria, "Id", "Descripcion"), new { @class = "form-control", @name = "categoria" })
+                    @Html.ValidationMessageFor(x => x.CategoriaId, null, new { @class = "label label-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Marca")
+                    @Html.DropDownListFor(x => x.MarcaId, new SelectList(marca, "Id", "Descripcion"), new { @class = "form-control", @name = "marca" })
+                    @Html.ValidationMessageFor(x => x.MarcaId, null, new { @class = "label label-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Proveedor")
+                    @Html.DropDownListFor(x => x.ProveedorId, new SelectList(proveedor, "Id", "Descripcion"), new { @class = "form-control", @name = "proveedor" })
+                    @Html.ValidationMessageFor(x => x.ProveedorId, null, new { @class = "label label-danger" })
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

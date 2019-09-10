@@ -1,0 +1,40 @@
+﻿@model Mardom.Models.Almacen_Articulo
+@{
+    ViewBag.Title = ("Nuevo Registro");
+    List<Mardom.Models.Articulo> articulos = ViewBag.articulo;
+    List<Mardom.Models.Almacen> almacenes = ViewBag.almacen;
+
+}
+
+<ol class="breadcrumb">
+    <li><a href="~/">Articulos</a></li>
+    <li class="active">/ "Nuevo Registro"</li>
+</ol>
+
+@using (Html.BeginForm("Guardar", "Home", FormMethod.Post, new { id = "frm-articulo" }))
+{
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Información de articulo</div>
+        <div class="panel-body">
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                <div class="form-group">
+                    @Html.Label("Articulo")
+                    @Html.DropDownListFor(x => x.ArticuloId, new SelectList(articulos, "Id", "Descripcion"), new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Almacen")
+                    @Html.DropDownListFor(x => x.AlmacenId, new SelectList(almacenes, "Id", "Descripcion"), new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Cantidad")
+                    @Html.TextBoxFor(x => x.Cantidad, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Cantidad, null, new { @class = "label label-danger" })
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

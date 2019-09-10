@@ -1,0 +1,41 @@
+﻿@model Mardom.Models.Almacen
+@{
+    ViewBag.Title = (Model.Id > 0 ? Model.Descripcion : "Nuevo Registro");
+
+}
+
+<ol class="breadcrumb">
+    <li><a href="~/Almacen">Almacenes</a></li>
+    <li class="active">/ @(Model.Id > 0 ? Model.Descripcion : "Nuevo Registro")</li>
+</ol>
+
+@using (Html.BeginForm("Guardar", "Almacen", FormMethod.Post, new { id = "frm-almacen" }))
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="panel panel-default">
+        <div class="panel-heading">Información de almacen</div>
+        <div class="panel-body">
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                <div class="form-group">
+                    @Html.Label("Almacen")
+                    @Html.TextBoxFor(x => x.Descripcion, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Descripcion, null, new { @class = "label label-danger" })
+                </div>
+                <div class="form-group ">
+                    @Html.Label("Ubicación")
+                    @Html.TextBoxFor(x => x.Ubicacion, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Ubicacion, null, new { @class = "label label-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Capacidad")
+                    @Html.TextBoxFor(x => x.Capacidad, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Capacidad, null, new { @class = "label label-danger" })
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
