@@ -12,9 +12,13 @@ Podemos ver también las transacciones realizadas de entrada y salida en nuestro 
 ------Tecnologías implementadas------
 
 *Visual Studio 2017 community
+
    -Asp.Net MVC 5
+
    -Entity Framework (Code First)
+
    -bootstrap (Para el front end)
+
    -pagedlist mvc (Para la paginación)
 
 *Microsoft SQL Server 2017 developer edition
@@ -25,9 +29,13 @@ Podemos ver también las transacciones realizadas de entrada y salida en nuestro 
 ------Consideraciones para iniciar el proyecto------
 
 *Correr el script (MardomV1.sql este tiene datos de prueba o MardomV2.sql) de la BD (Base de Datos) en una versión de MS-SQL Server 2014 o superior.
+
 *De no querer utilizar el login principal para acceder a la BD desde el sistema debe crear uno con todos los permisos necesarios.
+
 *Colocar en el Web.config del sistema el usuario y password para la conexión a la BD.
+
 *En caso de no utilizar datos de prueba debe registrar primero las marcas, categorías, proveedores, almacenes y artículos.
+
 *En caso de no utilizar datos de prueba es necesario ingresar por BD en la tabla tipoMovimiento Entrada con el id = 1 y Salida con el id = 2, esto porque no se consideró pertinente crear un módulo para crear 2 registros únicos.
 
 ----------------------------------------------------------------------------------------------------------------------------
