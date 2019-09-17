@@ -84,6 +84,9 @@ namespace Mardom.Controllers
             }
             else
             {
+                ViewBag.articulo = articulo.Listar();
+                ViewBag.almacen = almacen.Listar();
+
                 return View("~/Views/Home/Crud.cshtml", model);
             }
 

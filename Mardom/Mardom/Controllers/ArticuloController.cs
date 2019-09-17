@@ -60,6 +60,10 @@ namespace Mardom.Controllers
             }
             else
             {
+                ViewBag.Categorias = categoria.Listar();
+                ViewBag.Marcas = marca.Listar();
+                ViewBag.Proveedor = proveedor.Listar();
+
                 return View("~/Views/Articulo/Crud.cshtml", model);
             }
 
